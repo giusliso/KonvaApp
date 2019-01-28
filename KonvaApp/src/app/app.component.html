@@ -1,0 +1,5 @@
+<div id = "container"></div>
+
+<button type="button" (click) = "zoomIn()" [disabled] = "zoomLevel == 2" >+</button>
+<button type="button" (click) = "zoomOut()" [disabled] = "zoomLevel == 1" >-</button>
+<button type="button" (click) = "learningPath()" [disabled] = "!pointsLayer.hasChildren()" >Learning Path</button>
