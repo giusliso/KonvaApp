@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
   }
 
   public zoomIn() {
-    this.zoomLevel += 1;
+    this.zoomLevel += 0.25;
     this.stage.scale({
         x : this.zoomLevel,
         y : this.zoomLevel
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
 
   public zoomOut() {
     if(this.zoomLevel !== 1){
-      this.zoomLevel -= 1;
+      this.zoomLevel -= 0.25;
       if(this.zoomLevel == 1){
         this.stage.position({
           x : this.zoomLevel,
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit {
     for(let i = 0; i<points.length; i++){
       const circle = points[i] as Konva.Circle;
       const circleA = points[i + 1] as Konva.Circle;
-      const color = this.getRandomColor();
+      const color = 'green';
       if(circleA !== undefined) {
         var arrow = new Konva.Line({
           points: [circle.getAttrs().x, circle.getAttrs().y, 
@@ -134,21 +134,12 @@ export class AppComponent implements OnInit {
     }; 
   }
 
-  private getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-
   private addPoint(event) {
     var mousePos = this.stage.getPointerPosition();
     var circle = new Konva.Circle({
       x: mousePos.x ,
       y: mousePos.y ,
-      radius: 10,
+      radius: 5,
       name: 'Target ' + this.pointsLayer.getChildren().length,
       fill: 'red',
       stroke: 'black',
